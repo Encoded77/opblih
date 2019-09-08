@@ -1,0 +1,26 @@
+{
+  "name": "opblih",
+  "version": "1.0.0",
+  "description": "A stylish cli implementation of blih",
+  "main": "src/index.js",
+  "bin": {
+    "opblih": "bin/opblih.js"
+  },
+  "scripts": {
+    "start": "node bin/opblih.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Encoded77/opblih.git"
+  },
+  "keywords": [
+    "blih",
+    "epitech"
+  ],
+  "author": "Thomas Dupré",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Encoded77/opblih/issues"
+  },
+  "homepage": "https://github.com/Encoded77/opblih#readme"
+}
