@@ -5,7 +5,7 @@ const React = require('react')
 // Components
 const { Box, Text, Color } = require('ink')
 
-function ShowEmail(props){
+const ShowEmail = (props) => {
   //Check for mail presence
   if (props.mail === undefined) return null
 
@@ -17,4 +17,5 @@ function ShowEmail(props){
 ShowEmail.defaultProp = {
   mail: undefined
 }
+
 module.exports = ShowEmail

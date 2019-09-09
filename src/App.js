@@ -5,7 +5,7 @@ const importJsx = require('import-jsx')
 
 //Steps
 const Init = importJsx('./steps/Init')
-const SelectMenu = importJsx('./steps/SelectMenu')
+const HomeMenu = importJsx('./steps/HomeMenu')
 const CredentialForm = importJsx('./steps/CredentialForm')
 const ActionDispatcher = importJsx('./steps/ActionDispatcher');
 
@@ -14,6 +14,7 @@ const { Step, To } = require('ink-step')
 const { Box } = require('ink')
 const Logo = importJsx('./components/Logo')
 const ShowEmail = importJsx('./components/ShowEmail.js')
+const BlihOnline = importJsx('./components/BlihOnline')
 
 // Config store
 const configstore = require('../config/config')
@@ -86,17 +87,9 @@ class App extends React.Component {
             <ShowEmail 
             mail={this.state.credentials.mail}
             />
+            <BlihOnline />
           </Box>
           <Box marginBottom={1} >
-            {/* Action dispatcher */}
-            <Step task='actionDispatcher'>
-              <ActionDispatcher 
-              store={config}
-              data={this.state.data}
-              resetCredentials={this.resetCredentials}
-              />
-            </Step>
-
             <Step task='init'>
               {/* Initialization logic step */}
               <Init 
@@ -117,9 +110,19 @@ class App extends React.Component {
             </Step>
 
             <Step task='homeMenu'>
-              <SelectMenu 
+              <HomeMenu 
               assignData={this.assignData}
               />
+            </Step>
+
+            {/* Action dispatcher */}
+            <Step task='actionDispatcher'>
+              <ActionDispatcher 
+              store={config}
+              blih={this.state.blih}
+              data={this.state.data}
+              resetCredentials={this.resetCredentials}
+            />
             </Step>
           </Box>
         </Box>

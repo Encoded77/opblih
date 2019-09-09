@@ -8,7 +8,7 @@ const { To } = require('ink-step')
 const Item = importJsx('../components/Item')
 const ItemIndicator = importJsx('../components/ItemIndicator')
 
-class SelectMenu extends React.Component {
+class ReposMenu extends React.Component {
   constructor(...args){
     super(...args)
 
@@ -56,19 +56,12 @@ class SelectMenu extends React.Component {
 const selectItems = [
   {
     label:' Repositories',
-    value: 'repoActions'
-  },
-  {
-    label:' SSH',
-    value: 'sshActions'
-  },
-  {
-    label: 'Forget current email & password',
     value: {
-      action: 'forgetAction',
-      to: 'init'
-    }
+      action: 'showReposActions',
+      to: 'reposMenu'
+    },
+    key: 0
   }
 ]
 
-module.exports = SelectMenu
+module.exports = ReposMenu

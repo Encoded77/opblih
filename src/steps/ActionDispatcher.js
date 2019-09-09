@@ -27,6 +27,12 @@ class ActionDispatcher extends React.Component {
         store.delete('password')
         this.props.resetCredentials()
         break;
+
+      case 'showSshActions':
+        break
+
+      case 'showReposActions':
+          break
     
       default:
         throw 'Wrong action in ActionDispatcher'
