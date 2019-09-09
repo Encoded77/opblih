@@ -1,26 +1,72 @@
 {
-  "name": "opblih",
-  "version": "1.0.0",
-  "description": "A stylish cli implementation of blih",
-  "main": "src/index.js",
-  "bin": {
-    "opblih": "bin/opblih.js"
-  },
-  "scripts": {
-    "start": "node bin/opblih.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Encoded77/opblih.git"
-  },
-  "keywords": [
-    "blih",
-    "epitech"
-  ],
-  "author": "Thomas Dupré",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Encoded77/opblih/issues"
-  },
-  "homepage": "https://github.com/Encoded77/opblih#readme"
+	"name": "opblih",
+	"version": "1.0.0",
+	"description": "A stylish cli implementation of blih",
+	"main": "src/index.js",
+	"bin": {
+		"opblih": "bin/opblih.js"
+	},
+	"scripts": {
+		"start": "node bin/opblih.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Encoded77/opblih.git"
+	},
+	"keywords": [
+		"blih",
+		"epitech"
+	],
+	"author": "Thomas Dupré",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Encoded77/opblih/issues"
+	},
+	"homepage": "https://github.com/Encoded77/opblih#readme",
+	"dependencies": {
+		"blih": "^1.7.3",
+		"configstore": "^5.0.0",
+		"figures": "^3.0.0",
+		"import-jsx": "^3.0.0",
+		"ink": "^2.3.0",
+		"ink-big-text": "^1.0.1",
+		"ink-gradient": "^1.0.0",
+		"ink-select-input": "^3.1.2",
+		"ink-step": "0.0.3",
+		"ink-text-input": "^3.2.1",
+		"prop-types": "^15.7.2",
+		"react": "^16.9.0"
+	},
+	"devDependencies": {
+		"@babel/preset-react": "^7.0.0",
+		"@babel/register": "^7.5.5",
+		"ava": "^2.3.0",
+		"chalk": "^2.4.2",
+		"eslint-config-xo-react": "^0.20.0",
+		"eslint-plugin-react": "^7.14.3",
+		"eslint-plugin-react-hooks": "^2.0.1",
+		"ink-testing-library": "^1.0.2",
+		"xo": "^0.24.0"
+	},
+	"ava": {
+		"require": [
+			"@babel/register"
+		]
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-react",
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": true
+					}
+				}
+			]
+		]
+	},
+	"xo": {
+		"extends": "xo-react"
+	}
 }

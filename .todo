@@ -1,1 +1,9 @@
 Publish to npm
+
+User component: mail (when credentials are set, show the mail used)
+
+Step : action dispatcher:
+Can be rendered with a prop of action (string)
+A prop of 'to' wich will modify the next step after the action
+And do different thing depending on action
+will have access to config store & blih instance
