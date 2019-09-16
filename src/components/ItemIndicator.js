@@ -12,9 +12,9 @@ const ItemIndicator = ({
 }) => {
 
   if(isSelected){
-    return(<Gradient name='morning'>{figures.arrowRight}{'  '}</Gradient>)
+    return(<Gradient name='morning'>{figures.arrowRight}{' '}</Gradient>)
   } else {
-    return(<div>{'   '}</div>)
+    return(<div>{'  '}</div>)
   }
 }
 

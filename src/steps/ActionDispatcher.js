@@ -20,6 +20,29 @@ class ActionDispatcher extends React.Component {
     }
 
     switch (this.state.data.action) {
+
+      // Menus navigation
+      case 'showSshActions':
+
+        break
+
+      case 'showAclActions':
+        // TODO:
+        break
+
+      case 'showReposActions':
+        // TODO:
+        break
+
+      // Actions
+      case 'listSshKeys':
+        this.props.blih.listKeys()
+          .then((data) => {
+            console.log(data)
+          })
+          .catch(err => console.error(err))
+        break
+
       // Delete credentials from config store & app state
       case 'forgetAction':
         const { store } = this.props
@@ -27,13 +50,7 @@ class ActionDispatcher extends React.Component {
         store.delete('password')
         this.props.resetCredentials()
         break;
-
-      case 'showSshActions':
-        break
-
-      case 'showReposActions':
-          break
-    
+  
       default:
         throw 'Wrong action in ActionDispatcher'
         break

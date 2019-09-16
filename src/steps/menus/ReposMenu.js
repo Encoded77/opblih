@@ -5,10 +5,10 @@ const importJsx = require('import-jsx')
 // Components
 const SelectInput = require('ink-select-input').default
 const { To } = require('ink-step')
-const Item = importJsx('../components/Item')
-const ItemIndicator = importJsx('../components/ItemIndicator')
+const Item = importJsx('../../components/Item')
+const ItemIndicator = importJsx('../../components/ItemIndicator')
 
-class HomeMenu extends React.Component {
+class ReposMenu extends React.Component {
   constructor(...args){
     super(...args)
 
@@ -40,6 +40,7 @@ class HomeMenu extends React.Component {
     
       default: // On default render go to Step action passing along props
         const { action, to } = this.state.action
+        // Reset state
         this.state.action = undefined
         this.state.to = undefined
 
@@ -61,23 +62,7 @@ const selectItems = [
       to: 'reposMenu'
     },
     key: 0
-  },
-  {
-    label:' ACLs',
-    value: {
-      action: 'showAclActions',
-      to: 'aclMenu'
-    },
-    key: 1
-  },
-  {
-    label: 'Forget current email & password',
-    value: {
-      action: 'forgetAction',
-      to: 'init'
-    },
-    key: 2
   }
 ]
 
-module.exports = HomeMenu
+module.exports = ReposMenu

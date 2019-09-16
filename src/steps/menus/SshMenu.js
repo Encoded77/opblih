@@ -5,10 +5,10 @@ const importJsx = require('import-jsx')
 // Components
 const SelectInput = require('ink-select-input').default
 const { To } = require('ink-step')
-const Item = importJsx('../components/Item')
-const ItemIndicator = importJsx('../components/ItemIndicator')
+const Item = importJsx('../../components/Item')
+const ItemIndicator = importJsx('../../components/ItemIndicator')
 
-class ReposMenu extends React.Component {
+class ShhMenu extends React.Component {
   constructor(...args){
     super(...args)
 
@@ -40,6 +40,7 @@ class ReposMenu extends React.Component {
     
       default: // On default render go to Step action passing along props
         const { action, to } = this.state.action
+        // Reset state
         this.state.action = undefined
         this.state.to = undefined
 
@@ -55,13 +56,13 @@ class ReposMenu extends React.Component {
 
 const selectItems = [
   {
-    label:' Repositories',
+    label:' List SSH Keys',
     value: {
-      action: 'showReposActions',
-      to: 'reposMenu'
+      action: 'listSshKeys',
+      to: 'sshMenu'
     },
     key: 0
   }
 ]
 
-module.exports = ReposMenu
+module.exports = ShhMenu

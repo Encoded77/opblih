@@ -5,9 +5,12 @@ const importJsx = require('import-jsx')
 
 //Steps
 const Init = importJsx('./steps/Init')
-const HomeMenu = importJsx('./steps/HomeMenu')
 const CredentialForm = importJsx('./steps/CredentialForm')
 const ActionDispatcher = importJsx('./steps/ActionDispatcher');
+
+//Menus
+const HomeMenu = importJsx('./steps/menus/HomeMenu')
+const SshMenu = importJsx('./steps/menus/SshMenu')
 
 // Components
 const { Step, To } = require('ink-step')
@@ -59,7 +62,8 @@ class App extends React.Component {
   }
 
   /**
-   * Assign data to be passed to action dispatcher
+   * Assign data to be passed to action dispatcher.
+   * Directly modifying state, otherwise it renders the logo twice
    * @param  {...any} args properties to spread in app.state.data without triggering rerender of App
    */
   assignData(...args){
@@ -109,8 +113,15 @@ class App extends React.Component {
               />
             </Step>
 
+            {/* Menus */}
             <Step task='homeMenu'>
               <HomeMenu 
+              assignData={this.assignData}
+              />
+            </Step>
+
+            <Step task='sshMenu'>
+              <SshMenu 
               assignData={this.assignData}
               />
             </Step>
