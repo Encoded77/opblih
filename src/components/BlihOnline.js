@@ -5,6 +5,9 @@ const Blih = require('blih')
 //Components
 const { Text, Color } = require('ink')
 
+/**
+ * Blank text wich replace itself with blih server status
+ */
 class BlihOnline extends React.Component {
   constructor(...args){
     super(...args)

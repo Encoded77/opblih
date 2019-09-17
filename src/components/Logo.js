@@ -5,6 +5,10 @@ const React = require('react')
 const Gradient = require('ink-gradient')
 const BigText = require('ink-big-text')
 
+/**
+ * Presentation logo component
+ * @param {*} props text
+ */
 const Logo = (props) => {
   return(
     <Gradient name='morning'>

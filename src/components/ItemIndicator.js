@@ -2,6 +2,7 @@
 const React = require('react')
 
 //Components
+const { Box } = require('ink')
 const Gradient = require('ink-gradient')
 const figures = require('figures')
 
@@ -14,7 +15,7 @@ const ItemIndicator = ({
   if(isSelected){
     return(<Gradient name='morning'>{figures.arrowRight}{' '}</Gradient>)
   } else {
-    return(<div>{'  '}</div>)
+    return(<Box>{'  '}</Box>)
   }
 }
 

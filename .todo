@@ -1,4 +1,11 @@
 Publish to npm
 
-Error step: with a back option to homeMenu
-Ssh actions
+Error route: with a back option to homeMenu
+Repos Action:
+-Create (Should also ask to git clone in current directory)(Apply rammasage-tek automaticaly)
+-Delete (List all repos and ask before deleting)
+-List (With back input)
+Acl Actions
+- Add (Get a list of all repos, can click on them then add an user)
+- Remove (Get a list of all repos, can click on them, list all right, can click to delete)
+Ssh Actions

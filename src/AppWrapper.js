@@ -3,19 +3,19 @@
 const React = require('react')
 const importJsx = require('import-jsx')
 
-// Components
-const { TaskProvider, createStepHistory } = require('ink-step')
+//Redux
+const { Provider } = require('react-redux')
+const store = require('./store')
+
+
 const App = importJsx('./App')
 
-
-const history = createStepHistory('init')
-
-// Wrap entire app in Ink-step for routing purposes
+// Wrap entire app in Ink-Redux provider
 const AppWrapper = () => {
   return(
-    <TaskProvider history={history} >
+    <Provider store={store}>
       <App />
-    </TaskProvider>
+    </Provider>
   )
 }
 
