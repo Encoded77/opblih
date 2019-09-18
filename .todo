@@ -8,4 +8,3 @@ Repos Action:
 Acl Actions
 - Add (Get a list of all repos, can click on them then add an user)
 - Remove (Get a list of all repos, can click on them, list all right, can click to delete)
-Ssh Actions

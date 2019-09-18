@@ -1,5 +1,4 @@
 'use strict'
-// React imports
 const React = require('react')
 const importJsx = require('import-jsx')
 const { connect } = require('react-redux')
@@ -37,7 +36,7 @@ class App extends React.Component {
             <BlihOnline />
 
           </Box>
-          <Box marginBottom={1} >
+          <Box marginBottom={1} alignItems='flex-start'>
 
             {/* Component managing pages rendering */}
             <RouteManager />

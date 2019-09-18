@@ -4,15 +4,15 @@ const importJsx = require('import-jsx')
 const { connect } = require('react-redux')
 
 //Actions
-const { deleteUser } = require('../actions/userActions')
 const { changeRoute } = require('../actions/routeActions')
+const { fetchSshKeys, addSshKey, deleteSshKey } = require('../actions/sshActions')
 
 // Components
 const SelectInput = require('ink-select-input').default
 const Item = importJsx('../components/Item')
 const ItemIndicator = importJsx('../components/ItemIndicator')
 
-class MainMenu extends React.Component {
+class SshMenu extends React.Component {
   constructor(...args){
     super(...args)
     this.handleSelect = this.handleSelect.bind(this)
@@ -37,34 +37,34 @@ class MainMenu extends React.Component {
 
 const selectItems = [
   {
-    label:' Repositories Actions',
+    label:' Add a key',
     value: {
-      route: 'repositoryMenu',
+      route: 'addSsh',
       action: ''
     },
     key: 0
   },
   {
-    label:' ACL Actions',
+    label:' Delete a key',
     value: {
-      route: 'sclMenu',
+      route: 'deleteSsh',
       action: ''
     },
     key: 1
   },
   {
-    label:' SSH Actions',
+    label:' List ssh keys',
     value: {
-      route: 'sshMenu',
-      action: ''
+      route: 'sshList',
+      action: 'fetchSshKeys'
     },
     key: 2
   },
   {
-    label:' Forget current email & password',
+    label:' Go back',
     value: {
-      route: 'credentialForm',
-      action: 'deleteUser'
+      route: 'mainMenu',
+      action: ''
     },
     key: 3
   }
@@ -75,8 +75,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToState = {
-  deleteUser,
-  changeRoute
+  changeRoute,
+  fetchSshKeys,
+  deleteSshKey,
+  addSshKey
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToState)(MainMenu)
+module.exports = connect(mapStateToProps, mapDispatchToState)(SshMenu)

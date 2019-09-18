@@ -37,6 +37,7 @@ class BlihOnline extends React.Component {
     if (this.state.status === undefined) return(
       <Text>{' '}</Text>
     )
+
     if (this.state.status === 'online'){
       return(
         <Text>
