@@ -48,7 +48,7 @@ class AddSsh extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.error}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='sshMenu'
             action='resetSshAddState'
           />
@@ -61,7 +61,7 @@ class AddSsh extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.response}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='sshMenu'
             action='resetSshAddState'
           />

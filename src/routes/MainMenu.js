@@ -45,14 +45,6 @@ const selectItems = [
     key: 0
   },
   {
-    label:' ACL Actions',
-    value: {
-      route: 'sclMenu',
-      action: ''
-    },
-    key: 1
-  },
-  {
     label:' SSH Actions',
     value: {
       route: 'sshMenu',

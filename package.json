@@ -31,6 +31,7 @@
 		"ink": "^2.3.0",
 		"ink-big-text": "^1.0.1",
 		"ink-gradient": "^1.0.0",
+		"ink-multi-select": "^1.0.3",
 		"ink-select-input": "^3.1.2",
 		"ink-spinner": "^3.0.1",
 		"ink-table": "^2.0.1",

@@ -9,10 +9,11 @@ const figures = require('figures')
 // Overwrite Selectmenu indicator components
 const ItemIndicator = ({
   isSelected,
-  label
+  label,
+  isHighlighted
 }) => {
 
-  if(isSelected){
+  if(isSelected || isHighlighted){
     return(<Gradient name='morning'>{figures.arrowRight}{' '}</Gradient>)
   } else {
     return(<Box>{'  '}</Box>)

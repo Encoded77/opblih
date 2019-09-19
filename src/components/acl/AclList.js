@@ -5,7 +5,7 @@ const { connect } = require('react-redux')
 
 // Actions
 const { changeRoute } = require('../../actions/routeActions')
-const { resetRepoInfoState, fetchRepoInfo } = require('../../actions/repoActions')
+const { fetchAcl, resetFetchAclState } = require('../../actions/aclActions')
 
 // Components
 const Spinner = require('ink-spinner').default
@@ -17,9 +17,7 @@ const SelectInput = require('ink-select-input').default
 const Item = importJsx('../Item')
 const ItemIndicator = importJsx('../ItemIndicator')
 
-const CustomHeader = ({children}) => <Gradient name='morning'>{children}</Gradient>
-
-class RepoList extends React.Component {
+class AclList extends React.Component {
   constructor(...args){
     super(...args)
 
@@ -33,8 +31,8 @@ class RepoList extends React.Component {
       data.push({
         label:` ${el.name}`,
         value: {
-          route: 'repoInfo',
-          action: 'fetchRepoInfo',
+          route: 'repoAclMenu',
+          action: 'fetchAcl',
           name: `${el.name}`
         },
         key: i++
@@ -44,7 +42,7 @@ class RepoList extends React.Component {
       label:` Go back`,
         value: {
           route: 'repoMenu',
-          action: 'resetRepoInfoState'
+          action: 'resetFetchAclState'
         },
         key: i++
     })
@@ -56,9 +54,9 @@ class RepoList extends React.Component {
   }
 
   handleSelect(option){
-    if (option.value.action === 'fetchRepoInfo') {
-      this.props.resetRepoInfoState()
-      this.props.fetchRepoInfo(option.value.name)
+    if (option.value.action === 'fetchAcl') {
+      this.props.resetFetchAclState()
+      this.props.fetchAcl(option.value.name)
     } else if (option.value.action !== ''){
       this.props[option.value.action]()
     }
@@ -97,14 +95,14 @@ class RepoList extends React.Component {
           <Text>{this.props.error}</Text>
           <GoBack 
           label=' Go back'
-          route='repoMenu'
-          action='resetListReposState'
+          route='mainMenu'
+          action='resetFetchAclState'
           />
       </Box>
       )
     }
 
-    return (<Box>Aaaaaa</Box>)
+    return (<Box>AAAAAA</Box>)
   }
 }
 
@@ -118,8 +116,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   changeRoute,
-  resetRepoInfoState,
-  fetchRepoInfo
+  resetFetchAclState,
+  fetchAcl
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(RepoList)
+module.exports = connect(mapStateToProps, mapDispatchToProps)(AclList)

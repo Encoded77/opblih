@@ -7,10 +7,11 @@ const {Text, Color} = require('ink')
 // Overwrite Selectmenu item components
 const Item = ({
   isSelected,
-  label
+  label,
+  isHighlighted
 }) => {
 
-  if(isSelected){
+  if(isSelected ||isHighlighted){
     return(<Text bold><Color hex='#fcca72'>{label}</Color></Text>)
   } else {
     return(<Text>{label}</Text>)

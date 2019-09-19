@@ -48,7 +48,7 @@ class AddRepo extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.error}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='repoMenu'
             action='resetAddRepoState'
           />
@@ -61,7 +61,7 @@ class AddRepo extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.response}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='repoMenu'
             action='resetAddRepoState'
           />

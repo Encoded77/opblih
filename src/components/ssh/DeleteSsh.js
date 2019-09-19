@@ -45,7 +45,7 @@ class DeleteSsh extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.deleteError}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='sshMenu'
             action='resetSshDeleteState'
           />
@@ -58,7 +58,7 @@ class DeleteSsh extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.deleteResponse}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='sshMenu'
             action='resetSshDeleteState'
           />
@@ -79,7 +79,7 @@ class DeleteSsh extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.listError}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='sshMenu'
             action='resetSshDeleteState'
           />

@@ -30,11 +30,11 @@ class SshList extends React.Component {
       return  (
         <Box flexDirection='column'>
           <Table 
-          data={data}
-          header={CustomHeader}
+            data={data}
+            header={CustomHeader}
           />
           <GoBack 
-          label='Go back'
+          label=' Go back'
           route='sshMenu'
           />
         </Box>
@@ -45,7 +45,7 @@ class SshList extends React.Component {
         <Box flexDirection='column'>
         <Text>{this.props.error}</Text>
         <GoBack 
-        label='Go back'
+        label=' Go back'
         route='sshMenu'
         />
       </Box>

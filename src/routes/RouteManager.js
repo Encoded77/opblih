@@ -17,6 +17,10 @@ const RepoList = importJsx('../components/repo/RepoList')
 const AddRepo = importJsx('../components/repo/AddRepo')
 const DeleteRepo = importJsx('../components/repo/DeleteRepo')
 const RepoInfo = importJsx('../components/repo/RepoInfo')
+// Acl routes
+const AclList = importJsx('../components/acl/AclList')
+const RepoAclMenu = importJsx('../components/acl/RepoAclMenu')
+const AddAcl = importJsx('../components/acl/AddAcl')
 
 const RouteManager = (props) => {
   // ALL STEPS
@@ -28,12 +32,17 @@ const RouteManager = (props) => {
     case 'addSsh': return(<AddSsh />)
     case 'deleteSsh': return(<DeleteSsh />)
     case 'sshList': return (<SshList />)
-    /* REPO action / menus */
+    /* REPO actions / menus */
     case 'repoMenu': return(<RepoMenu />)
     case 'repoList': return(<RepoList />)
     case 'addRepo': return(<AddRepo />)
     case 'deleteRepo': return(<DeleteRepo />)
     case 'repoInfo': return(<RepoInfo />)
+    /* ACLs actions / menus */
+    case 'aclList': return(<AclList />)
+    case 'repoAclMenu': return(<RepoAclMenu />)
+    case 'addAcl': return(<AddAcl />)
+
     default: return null
   }
 

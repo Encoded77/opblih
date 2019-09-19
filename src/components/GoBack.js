@@ -7,6 +7,7 @@ const { connect } = require('react-redux')
 const { changeRoute } = require('../actions/routeActions')
 const { resetSshAddState, resetSshDeleteState } = require('../actions/sshActions')
 const { resetAddRepoState, resetListReposState, resetDeleteRepoState, resetRepoInfoState } = require('../actions/repoActions')
+const { resetAddAclState } = require('../actions/aclActions')
 
 // Components
 const SelectInput = require('ink-select-input').default
@@ -55,7 +56,8 @@ const mapDispatchToProps = {
   resetListReposState,
   resetAddRepoState,
   resetDeleteRepoState,
-  resetRepoInfoState
+  resetRepoInfoState,
+  resetAddAclState
 }
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(GoBack)

@@ -65,12 +65,20 @@ const selectItems = [
     key: 2
   },
   {
+    label:' Change ACLs',
+    value: {
+      route: 'aclList',
+      action: 'fetchRepos'
+    },
+    key: 3
+  },
+  {
     label:' Go back',
     value: {
       route: 'mainMenu',
       action: ''
     },
-    key: 3
+    key: 4
   }
 ]
 

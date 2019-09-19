@@ -35,7 +35,7 @@ class RepoInfo extends React.Component {
         <Box flexDirection='column'>
           <Text>{this.props.error}</Text>
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='repoList'
             action='resetRepoInfoState'
           />
@@ -52,7 +52,7 @@ class RepoInfo extends React.Component {
             header={CustomHeader}
           />
           <GoBack 
-            label='Go back'
+            label=' Go back'
             route='repoList'
             action='resetRepoInfoState'
           />
