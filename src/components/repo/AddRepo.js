@@ -5,7 +5,7 @@ const importJsx = require('import-jsx')
 
 //Actions
 const { changeRoute } = require('../../actions/routeActions')
-const { addSshKey } = require('../../actions/sshActions')
+const { createRepo, resetAddRepoState } = require('../../actions/repoActions')
 
 //Components
 const { Box, Text, Color } = require('ink')
@@ -14,7 +14,7 @@ const Spinner = require('ink-spinner').default
 const Gradient = require('ink-gradient')
 const GoBack = importJsx('../GoBack')
 
-class AddSsh extends React.Component {
+class AddRepo extends React.Component {
   constructor(...args){
     super(...args)
 
@@ -31,7 +31,7 @@ class AddSsh extends React.Component {
   }
 
   onSubmit(){
-    this.props.addSshKey(this.state.input)
+    this.props.createRepo(this.state.input)
   }
 
   render(){
@@ -49,8 +49,8 @@ class AddSsh extends React.Component {
           <Text>{this.props.error}</Text>
           <GoBack 
             label='Go back'
-            route='sshMenu'
-            action='resetSshAddState'
+            route='repoMenu'
+            action='resetAddRepoState'
           />
         </Box>
       )
@@ -62,8 +62,8 @@ class AddSsh extends React.Component {
           <Text>{this.props.response}</Text>
           <GoBack 
             label='Go back'
-            route='sshMenu'
-            action='resetSshAddState'
+            route='repoMenu'
+            action='resetAddRepoState'
           />
         </Box>
       )
@@ -71,8 +71,7 @@ class AddSsh extends React.Component {
 
     return(
       <Box flexDirection='column'>
-        <Text bold><Color hex='#fcca72'>Paste the content</Color> (ctrl + shift + v) <Color hex='#fcca72'>of your ssh key below</Color>:</Text>
-        <Text>(Usually located in ~/.ssh/id_rsa.pub)</Text>
+        <Text bold><Color hex='#fcca72'>What's the name of the repo ?</Color></Text>
         <TextInput 
           value={this.state.input}
           onChange={this.onChange}
@@ -84,13 +83,13 @@ class AddSsh extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.ssh.add.loading,
-  error: state.ssh.add.error,
-  response: state.ssh.add.response
+  loading: state.repo.add.loading,
+  error: state.repo.add.error,
+  response: state.repo.add.response
 })
 
 const mapDispatchToProps = {
-  addSshKey
+  createRepo
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(AddSsh)
+module.exports = connect(mapStateToProps, mapDispatchToProps)(AddRepo)

@@ -5,7 +5,7 @@ const importJsx = require('import-jsx')
 
 //Actions
 const { changeRoute } = require('../../actions/routeActions')
-const { deleteSshKey, fetchSshKeys, resetSshListState, resetSshDeleteState } = require('../../actions/sshActions')
+const { deleteRepo, fetchRepos, resetListReposState, resetDeleteRepoState } = require('../../actions/repoActions')
 
 //Components
 const { Box, Text, Color } = require('ink')
@@ -19,24 +19,24 @@ const Spinner = require('ink-spinner').default
 const Gradient = require('ink-gradient')
 const GoBack = importJsx('../GoBack')
 
-class DeleteSsh extends React.Component {
+class DeleteRepo extends React.Component {
   constructor(...args){
     super(...args)
 
-    this.props.resetSshListState()
-    this.props.resetSshDeleteState()
-    this.props.fetchSshKeys()
+    this.props.resetListReposState()
+    this.props.resetDeleteRepoState()
+    this.props.fetchRepos()
     this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleSelect(option){
-    if (option.value.action === 'deleteSshKey') {
-      this.props.resetSshListState()
-      this.props.deleteSshKey(option.value.name)
+    if (option.value.action === 'deleteRepo') {
+      this.props.resetListReposState()
+      this.props.deleteRepo(option.value.name)
     } else if (option.value.action !== ''){
       this.props[option.value.action]()
     }
-    if (option.value.route === 'sshMenu') this.props.changeRoute(option.value.route)
+    if (option.value.route === 'repoMenu') this.props.changeRoute(option.value.route)
   }
 
   render(){
@@ -46,8 +46,8 @@ class DeleteSsh extends React.Component {
           <Text>{this.props.deleteError}</Text>
           <GoBack 
             label='Go back'
-            route='sshMenu'
-            action='resetSshDeleteState'
+            route='repoMenu'
+            action='resetDeleteRepoState'
           />
         </Box>
       )
@@ -59,8 +59,8 @@ class DeleteSsh extends React.Component {
           <Text>{this.props.deleteResponse}</Text>
           <GoBack 
             label='Go back'
-            route='sshMenu'
-            action='resetSshDeleteState'
+            route='repoMenu'
+            action='resetDeleteRepoState'
           />
         </Box>
       )
@@ -69,7 +69,7 @@ class DeleteSsh extends React.Component {
     if (this.props.listLoading){
       return (
         <Gradient name='morning'>
-          {' Loading keys'} <Spinner type="dots"/>
+          {' Loading repos'} <Spinner type="dots"/>
         </Gradient>
       )
     }
@@ -80,24 +80,24 @@ class DeleteSsh extends React.Component {
           <Text>{this.props.listError}</Text>
           <GoBack 
             label='Go back'
-            route='sshMenu'
-            action='resetSshDeleteState'
+            route='repoMenu'
+            action='resetDeleteRepoState'
           />
         </Box>
       )
     }
 
-    if (this.props.listKeys){
+    if (this.props.listRepos){
       // Format result
-      const keys = this.props.listKeys
+      const repos = this.props.listRepos
       let data = []
       let i = 0
-        keys.forEach(el => {
+        repos.forEach(el => {
           data.push({
             label:` ${el.name}`,
             value: {
               route: '',
-              action: 'deleteSshKey',
+              action: 'deleteRepo',
               name: `${el.name}`
             },
             key: i++
@@ -106,7 +106,7 @@ class DeleteSsh extends React.Component {
       data.push({
         label:` Go back`,
           value: {
-            route: 'sshMenu',
+            route: 'repoMenu',
             action: ''
           },
           key: i++
@@ -139,20 +139,20 @@ class DeleteSsh extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  listLoading: state.ssh.list.loading,
-  listError: state.ssh.list.error,
-  listKeys: state.ssh.list.keys,
-  deleteLoading: state.ssh.delete.loading,
-  deleteError: state.ssh.delete.error,
-  deleteResponse: state.ssh.delete.response
+  listLoading: state.repo.list.loading,
+  listError: state.repo.list.error,
+  listRepos: state.repo.list.repos,
+  deleteLoading: state.repo.delete.loading,
+  deleteError: state.repo.delete.error,
+  deleteResponse: state.repo.delete.response
 })
 
 const mapDispatchToProps = {
   changeRoute,
-  fetchSshKeys,
-  deleteSshKey,
-  resetSshListState,
-  resetSshDeleteState
+  fetchRepos,
+  deleteRepo,
+  resetListReposState,
+  resetDeleteRepoState
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(DeleteSsh)
+module.exports = connect(mapStateToProps, mapDispatchToProps)(DeleteRepo)

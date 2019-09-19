@@ -11,6 +11,7 @@ const { fetchSshKeys, addSshKey, deleteSshKey } = require('../actions/sshActions
 const SelectInput = require('ink-select-input').default
 const Item = importJsx('../components/Item')
 const ItemIndicator = importJsx('../components/ItemIndicator')
+const { Box, Color, Text } = require('ink')
 
 class SshMenu extends React.Component {
   constructor(...args){
@@ -25,12 +26,15 @@ class SshMenu extends React.Component {
 
   render(){
     return( // default case, render the select menu
-      <SelectInput 
-        items={selectItems} 
-        onSelect={this.handleSelect}
-        itemComponent={Item}
-        indicatorComponent={ItemIndicator}
-      />
+      <Box flexDirection='column'>
+        <Text bold><Color hex='#fcca72'>SSH actions:</Color></Text>
+        <SelectInput 
+          items={selectItems} 
+          onSelect={this.handleSelect}
+          itemComponent={Item}
+          indicatorComponent={ItemIndicator}
+        />
+      </Box>
     )
   }
 }

@@ -7,7 +7,6 @@ const importJsx = require('import-jsx')
 const { Provider } = require('react-redux')
 const store = require('./store')
 
-
 const App = importJsx('./App')
 
 // Wrap entire app in Ink-Redux provider

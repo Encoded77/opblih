@@ -11,6 +11,12 @@ const SshMenu = importJsx('./SshMenu')
 const AddSsh = importJsx('../components/ssh/AddSsh')
 const SshList = importJsx('../components/ssh/SshList')
 const DeleteSsh = importJsx('../components/ssh/DeleteSsh')
+// Repo Routes
+const RepoMenu = importJsx('./RepoMenu')
+const RepoList = importJsx('../components/repo/RepoList')
+const AddRepo = importJsx('../components/repo/AddRepo')
+const DeleteRepo = importJsx('../components/repo/DeleteRepo')
+const RepoInfo = importJsx('../components/repo/RepoInfo')
 
 const RouteManager = (props) => {
   // ALL STEPS
@@ -22,6 +28,12 @@ const RouteManager = (props) => {
     case 'addSsh': return(<AddSsh />)
     case 'deleteSsh': return(<DeleteSsh />)
     case 'sshList': return (<SshList />)
+    /* REPO action / menus */
+    case 'repoMenu': return(<RepoMenu />)
+    case 'repoList': return(<RepoList />)
+    case 'addRepo': return(<AddRepo />)
+    case 'deleteRepo': return(<DeleteRepo />)
+    case 'repoInfo': return(<RepoInfo />)
     default: return null
   }
 

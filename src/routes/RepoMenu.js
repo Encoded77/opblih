@@ -4,15 +4,16 @@ const importJsx = require('import-jsx')
 const { connect } = require('react-redux')
 
 //Actions
-const { deleteUser } = require('../actions/userActions')
 const { changeRoute } = require('../actions/routeActions')
+const { fetchRepos } = require('../actions/repoActions')
 
 // Components
 const SelectInput = require('ink-select-input').default
 const Item = importJsx('../components/Item')
 const ItemIndicator = importJsx('../components/ItemIndicator')
+const { Box, Color, Text } = require('ink')
 
-class MainMenu extends React.Component {
+class RepoMenu extends React.Component {
   constructor(...args){
     super(...args)
     this.handleSelect = this.handleSelect.bind(this)
@@ -24,47 +25,50 @@ class MainMenu extends React.Component {
   }
 
   render(){
-    return( // default case, render the select menu
-      <SelectInput 
+    return( // default case, render the select menu<
+      <Box flexDirection='column'>
+        <Text bold><Color hex='#fcca72'>Repositories actions:</Color></Text>
+        <SelectInput 
         items={selectItems} 
-        onSelect={this.handleSelect}
-        itemComponent={Item}
-        indicatorComponent={ItemIndicator}
-      />
+          onSelect={this.handleSelect}
+          itemComponent={Item}
+          indicatorComponent={ItemIndicator}
+        />
+      </Box>
     )
   }
 }
 
 const selectItems = [
   {
-    label:' Repositories Actions',
+    label:' Add a repo',
     value: {
-      route: 'repoMenu',
+      route: 'addRepo',
       action: ''
     },
     key: 0
   },
   {
-    label:' ACL Actions',
+    label:' Delete a repo',
     value: {
-      route: 'sclMenu',
+      route: 'deleteRepo',
       action: ''
     },
     key: 1
   },
   {
-    label:' SSH Actions',
+    label:' List repos',
     value: {
-      route: 'sshMenu',
-      action: ''
+      route: 'repoList',
+      action: 'fetchRepos'
     },
     key: 2
   },
   {
-    label:' Forget current email & password',
+    label:' Go back',
     value: {
-      route: 'credentialForm',
-      action: 'deleteUser'
+      route: 'mainMenu',
+      action: ''
     },
     key: 3
   }
@@ -75,8 +79,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToState = {
-  deleteUser,
-  changeRoute
+  changeRoute, 
+  fetchRepos
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToState)(MainMenu)
+module.exports = connect(mapStateToProps, mapDispatchToState)(RepoMenu)
