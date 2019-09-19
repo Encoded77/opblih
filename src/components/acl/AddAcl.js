@@ -8,9 +8,9 @@ const { changeRoute } = require('../../actions/routeActions')
 const { setAcl, resetAddAclState } = require('../../actions/aclActions')
 
 // Components
+const { Box, Color, Text } = require('ink')
 const Spinner = require('ink-spinner').default
 const Gradient = require('ink-gradient')
-const { Box, Color, Text } = require('ink')
 const GoBack = importJsx('../GoBack')
 
 const MultiSelect = require('ink-multi-select').default
@@ -45,8 +45,11 @@ class AddAcl extends React.Component {
   }
 
   onSubmit(acl){
-    acl = acl.join()
-    this.props.setAcl(this.props.repo, this.state.name, acl)
+    let acls = ''
+    acl.forEach(el => {
+      acls += el.value
+    })
+    this.props.setAcl(this.props.repo, this.state.name, acls)
   }
 
   render(){
