@@ -6,6 +6,7 @@ const importJsx = require('import-jsx')
 //Actions
 const { changeRoute } = require('../../actions/routeActions')
 const { createRepo, resetAddRepoState } = require('../../actions/repoActions')
+const { setAcl, resetAddAclState } = require('../../actions/aclActions')
 
 //Components
 const { Box, Text, Color } = require('ink')
@@ -13,6 +14,17 @@ const TextInput = require('ink-text-input').default
 const Spinner = require('ink-spinner').default
 const Gradient = require('ink-gradient')
 const GoBack = importJsx('../GoBack')
+
+const SelectInput = require('ink-select-input').default
+const Item = importJsx('../Item')
+const ItemIndicator = importJsx('../ItemIndicator')
+
+// Git clone
+const shell = require('shelljs')
+
+const gitClone = (mail, repo) => {
+  shell.exec(`git clone git@git.epitech.eu:/${mail}/${repo} ${process.cwd()}/${repo}`, { 'silent': true })
+}
 
 class AddRepo extends React.Component {
   constructor(...args){
@@ -24,6 +36,7 @@ class AddRepo extends React.Component {
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   onChange(input){
@@ -32,6 +45,15 @@ class AddRepo extends React.Component {
 
   onSubmit(){
     this.props.createRepo(this.state.input)
+  }
+
+  handleSelect(option){
+    if (option.value.action === 'clone') {
+      gitClone(this.props.email, this.state.input)
+    } else if (option.value.action !== ''){
+      this.props[option.value.action]()
+    }
+    if (option.value.route !== '') this.props.changeRoute(option.value.route)
   }
 
   render(){
@@ -57,13 +79,16 @@ class AddRepo extends React.Component {
     }
 
     if (this.props.response){
+      this.props.setAcl(this.state.input, 'ramassage-tek', 'r')
+      this.props.resetAddAclState()
       return (
         <Box flexDirection='column'>
           <Text>{this.props.response}</Text>
-          <GoBack 
-            label=' Go back'
-            route='repoMenu'
-            action='resetAddRepoState'
+          <SelectInput 
+            items={selectItems} 
+            onSelect={this.handleSelect}
+            itemComponent={Item}
+            indicatorComponent={ItemIndicator}
           />
         </Box>
       )
@@ -82,14 +107,36 @@ class AddRepo extends React.Component {
   }
 }
 
+const selectItems = [
+  {
+    label:' Clone into current directory',
+    value: {
+      route: 'repoMenu',
+      action: 'clone'
+    },
+    key: 0
+  },
+  {
+    label:' Go back',
+    value: {
+      route: 'repoMenu',
+      action: ''
+    },
+    key: 2
+  }
+]
 const mapStateToProps = state => ({
   loading: state.repo.add.loading,
   error: state.repo.add.error,
-  response: state.repo.add.response
+  response: state.repo.add.response,
+  email: state.user.email
 })
 
 const mapDispatchToProps = {
-  createRepo
+  changeRoute,
+  createRepo,
+  setAcl,
+  resetAddAclState
 }
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(AddRepo)

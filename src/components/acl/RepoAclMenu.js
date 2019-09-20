@@ -39,7 +39,7 @@ class RepoAclMenu extends React.Component {
     if (this.props.loading) {
       return (
         <Gradient name='morning'>
-          {' Loading keys'} <Spinner type="dots"/>
+          {' Loading acls'} <Spinner type="dots"/>
         </Gradient>
       )
     }
@@ -89,7 +89,7 @@ const selectItems = [
   {
     label:' Remove ACL',
     value: {
-      route: '',
+      route: 'removeAcl',
       action: ''
     },
     key: 1

@@ -50,6 +50,7 @@ class AddAcl extends React.Component {
       acls += el.value
     })
     this.props.setAcl(this.props.repo, this.state.name, acls)
+    this.props.resetAddAclState()
   }
 
   render(){

@@ -23,7 +23,7 @@ module.exports = function(state = {
     case 'ADD_ACL_STARTED': return state = {...state, add: {loading: true, error: undefined, res: undefined}}
     case 'ADD_ACL_FULLFILLED': return state = {...state, add: {loading: false, res: action.payload}}
     case 'ADD_ACL_ERROR': return state = {...state, add: {loading: false, error: action.payload}}
-    case 'RESET_ADD_ACL_STATE':  return state = {...state, acl: {loading: false, error: undefined, res: undefined}}
+    case 'RESET_ADD_ACL_STATE':  return state = {...state, add: {loading: false, error: undefined, res: undefined}}
  
   }
 

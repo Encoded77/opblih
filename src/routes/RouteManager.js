@@ -21,6 +21,7 @@ const RepoInfo = importJsx('../components/repo/RepoInfo')
 const AclList = importJsx('../components/acl/AclList')
 const RepoAclMenu = importJsx('../components/acl/RepoAclMenu')
 const AddAcl = importJsx('../components/acl/AddAcl')
+const RemoveAcl = importJsx('../components/acl/RemoveAcl')
 
 const RouteManager = (props) => {
   // ALL STEPS
@@ -42,6 +43,7 @@ const RouteManager = (props) => {
     case 'aclList': return(<AclList />)
     case 'repoAclMenu': return(<RepoAclMenu />)
     case 'addAcl': return(<AddAcl />)
+    case 'removeAcl': return(<RemoveAcl />)
 
     default: return null
   }
