@@ -1,6 +1,6 @@
 {
 	"name": "opblih",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A stylish cli implementation of blih",
 	"main": "src/index.js",
 	"bin": {
