@@ -8,4 +8,4 @@ Automaticaly add ramassage-tek with read acl on repo creation.
 * [Ink](https://www.npmjs.com/package/ink)
 * [Redux](https://react-redux.js.org/)
 
-[Demo](https://i.imgur.com/eMG3DT3.png)
+![Imgur](https://i.imgur.com/eMG3DT3.png "Demonstration")
